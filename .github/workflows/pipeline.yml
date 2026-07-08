@@ -37,11 +37,15 @@ jobs:
         python data/generate_data.py
 
     - name: Run Pytest
+      env:
+        PYTHONPATH: ${{ github.workspace }}
       run: |
         # Ensure tests pass before deploying
-        PYTHONPATH=. pytest tests/
+        python -m pytest tests/
         
     - name: Run Pipeline (Dry Run / Local SQL Lite fallback)
+      env:
+        PYTHONPATH: ${{ github.workspace }}
       run: |
         # Run the pipeline and ensure it completes without throwing unhandled exceptions
-        PYTHONPATH=. python etl/pipeline.py
+        python etl/pipeline.py

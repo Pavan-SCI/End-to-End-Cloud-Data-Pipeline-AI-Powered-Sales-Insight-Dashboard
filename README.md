@@ -29,6 +29,8 @@ project-root/
 ├── powerbi/                # Power BI Theme JSON and DAX measures
 ├── tests/                  # Pytest unit tests for ETL logic
 ├── logs/                   # Pipeline execution logs and validation reports
+├── src/                    # React Frontend source code (Vite + Tailwind)
+├── package.json            # Node.js dependencies for frontend
 ├── .github/workflows/      # CI/CD GitHub Actions pipeline
 ├── requirements.txt        # Python dependencies
 ├── .env.example            # Environment variables template
@@ -45,8 +47,9 @@ project-root/
 - **Data Visualization**: Clean, executive-level Power BI dashboard design with custom DAX and a cohesive theme.
 
 ## 🛠️ Tech Stack
-- **Languages**: Python 3.12, SQL, DAX
-- **Libraries**: `pandas`, `numpy`, `sqlalchemy`, `pyodbc`, `textblob`, `pytest`, `openai`
+- **Languages**: Python 3.12, SQL, DAX, TypeScript/JavaScript
+- **Frontend**: React 19, Vite, TailwindCSS 4, Motion (Animations)
+- **Data Engineering**: `pandas`, `numpy`, `sqlalchemy`, `pyodbc`, `textblob`, `pytest`, `openai`
 - **Database**: Azure SQL Database / Microsoft SQL Server
 - **BI Tool**: Power BI Desktop
 - **Version Control**: Git & GitHub Actions
@@ -83,12 +86,26 @@ python etl/pipeline.py
 ```
 *Check the `logs/` directory for execution details and validation reports.*
 
-### 5. Setup Power BI
+### 5. Run the React Frontend
+To launch the interactive web dashboard:
+```bash
+npm install
+npm run dev
+```
+*The dashboard will be available at `http://localhost:3000`.*
+
+### 6. Setup Power BI
 1. Open Power BI Desktop.
 2. Go to **View** -> **Themes** -> **Browse for themes** and select `powerbi/theme.json`.
 3. Click **Get Data** -> **SQL Server**. Enter your server details and connect.
 4. Load the `VW_...` views from your database.
 5. Create a new Measures table and copy the formulas from `powerbi/DAX_Measures.md`.
+
+### 7. Run Tests locally
+To execute the unit tests for the ETL pipeline:
+```bash
+python -m pytest tests/
+```
 
 ## 🔮 Future Enhancements
 - [ ] Migrate the ETL runtime to **Azure Data Factory** or **Apache Airflow**.

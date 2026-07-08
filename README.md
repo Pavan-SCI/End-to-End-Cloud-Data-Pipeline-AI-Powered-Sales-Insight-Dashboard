@@ -79,7 +79,7 @@ python data/generate_data.py
 ### 4. Run the ETL Pipeline
 Execute the full orchestrator to Extract, Transform, Validate, run AI Analysis, and Load to your database.
 ```bash
-python etl/pipeline.py
+python3 -m etl.pipeline
 ```
 *Check the `logs/` directory for execution details and validation reports.*
 

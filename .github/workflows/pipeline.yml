@@ -39,9 +39,9 @@ jobs:
     - name: Run Pytest
       run: |
         # Ensure tests pass before deploying
-        pytest tests/
+        PYTHONPATH=. pytest tests/
         
     - name: Run Pipeline (Dry Run / Local SQL Lite fallback)
       run: |
         # Run the pipeline and ensure it completes without throwing unhandled exceptions
-        python etl/pipeline.py
+        PYTHONPATH=. python etl/pipeline.py
